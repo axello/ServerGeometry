@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import App
 
 class RectangleTest: XCTestCase {
     
@@ -25,11 +26,16 @@ class RectangleTest: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+//    func testPerformanceExample() {
+//        // This is an example of a performance test case.
+//        self.measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
+    func testInitialisers() {
+        let rect = Rectangle(origin:Point(x:-10, y:-10), size:Size(width:40, height:30))
+        XCTAssert(rect.size.width == 40)
+        XCTAssert(rect.size.height == 30)
     }
     
 }
