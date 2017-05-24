@@ -41,7 +41,8 @@ struct Rectangle {
     /// Creating Rectangle Values
     /// Creates a rectangle with the specified origin and size.
     init(origin: Point, size: Size) {
-        
+        self.origin = origin
+        self.size = size
     }
 
     /// Creates a rectangle with coordinates and dimensions specified as floating-point values.
@@ -78,9 +79,8 @@ struct Rectangle {
     var minX: Double {
         if (size.width > 0) {
             return origin.x
-        } else {
-            return origin.x + size.width
         }
+        return origin.x + size.width
     }
     /// Returns the x-coordinate that establishes the center of a rectangle.
     var midX: Double {
@@ -92,18 +92,16 @@ struct Rectangle {
     var maxX: Double {
         if (size.width < 0) {
             return origin.x
-        } else {
-            return origin.x + size.width
         }
+        return origin.x + size.width
     }
 
     /// Returns the smallest value for the y-coordinate of the rectangle.
     var minY: Double {
         if (size.height > 0) {
             return origin.y
-        } else {
-            return origin.y + size.height
         }
+        return origin.y + size.height
     }
 
     /// Returns the y-coordinate that establishes the center of the rectangle.
@@ -116,9 +114,8 @@ struct Rectangle {
     var maxY: Double {
         if (size.height < 0) {
             return origin.y
-        } else {
-            return origin.y + size.height
         }
+        return origin.y + size.height
     }
 
     var center: Point {
@@ -144,9 +141,15 @@ struct Rectangle {
     // func applying(CGAffineTransform)
     
     /// Returns a rectangle that is smaller or larger than the source rectangle, with the same center point.
+    /// but the size cannot be negative
     func insetBy(dx: Double, dy: Double) -> Rectangle {
-        let newOrigin = Point(x: origin.x - dx, y: origin.y - dy)
-        let newSize = Size(width: size.width + 2*dx, height: size.height + 2*dy)
+        let dxnew = dx > 0 && (dx * 2) > size.width ? size.width / 2 : dx
+        let dynew = dy > 0 && (dy * 2) > size.height ? size.height / 2 : dy
+
+        let newOrigin = Point(x: origin.x + dxnew, y: origin.y + dynew)
+        let newSize = Size(width: size.width - 2*dxnew, height: size.height - 2*dynew)
+//        newSize.width = newSize.width < 0 ? 0 : newSize.width
+//        newSize.height = newSize.height < 0 ? 0 : newSize.height
         return Rectangle(origin: newOrigin, size: newSize)
     }
     /// Returns a rectangle with an origin that is offset from that of the source rectangle.
@@ -169,10 +172,10 @@ struct Rectangle {
                 newOrigin.y = point.y
             }
             if point.x > newOrigin.x {
-                newSize.width += (point.x - newOrigin.x)
+                newSize.width = (point.x - newOrigin.x)
             }
             if point.y > newOrigin.y {
-                newSize.height += (point.y - newOrigin.y)
+                newSize.height = (point.y - newOrigin.y)
             }
             self.origin = newOrigin
             self.size = newSize
@@ -183,8 +186,8 @@ struct Rectangle {
     func union(_ rect2: Rectangle) -> Rectangle {
         let minX = minimum(origin.x, rect2.origin.x)
         let minY = minimum(origin.y, rect2.origin.y)
-        let maxX = maximum(origin.x, rect2.origin.x)
-        let maxY = maximum(origin.y, rect2.origin.y)
+        let maxX = maximum(origin.x + width, rect2.origin.x + rect2.width)
+        let maxY = maximum(origin.y + height, rect2.origin.y + rect2.height)
         
         return Rectangle(origin: Point(x:minX, y:minY), size: Size(width: maxX - minX, height: maxY - minY))
     }
@@ -210,8 +213,7 @@ struct Rectangle {
     }
     /// Returns whether the first rectangle contains the second rectangle.
     func contains(_ rect2:Rectangle) -> Bool {
-        
-        if (minX <= rect2.minX && rect2.minX <= maxX) && (minY <= rect2.minY && rect2.minY <= minY) &&
+        if (minX <= rect2.minX && rect2.minX <= maxX) && (minY <= rect2.minY && rect2.minY <= maxY) &&
             (rect2.maxX <= maxX) && (rect2.maxY <= maxY) {
             return true
         }
@@ -231,7 +233,7 @@ struct Rectangle {
     // init?(dictionaryRepresentation: CFDictionary)
     /// Creates a rectangle from a canonical dictionary representation.
     var debugDescription: String {
-        return ("Rectangle origin:\(origin), size:\(size)")
+        return ("Rectangle origin:\(origin.debugDescription), size:\(size.debugDescription)")
     }
 
     // var customMirror: Mirror
@@ -240,10 +242,10 @@ struct Rectangle {
     /// A representation of the rectangle for use in Playgrounds.
     
     /// Comparing Rectangles
+    /// Returns whether two rectangles are equal in size and position.
     func equalTo(_ rect2:Rectangle) -> Bool {
         return self.origin == rect2.origin && self.size == rect2.size
     }
-    /// Returns whether two rectangles are equal in size and position.
     
     func minimum(_ lhs:Double, _ rhs: Double) -> Double {
         return lhs < rhs ? lhs : rhs
