@@ -1,0 +1,89 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Demo/AppDelegate.swift",
+      "line": 12,
+      "symbol": "AppDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Demo/AppDelegate.swift",
+      "line": 14,
+      "symbol": "AppDelegate.window",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Demo/AppDelegate.swift",
+      "line": 17,
+      "symbol": "AppDelegate.applicationDidFinishLaunching(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Demo/AppDelegate.swift",
+      "line": 21,
+      "symbol": "AppDelegate.applicationWillTerminate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Point.swift",
+      "line": 15,
+      "symbol": "Point",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Rectangle.swift",
+      "line": 19,
+      "symbol": "Rectangle",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Rectangle.swift",
+      "line": 64,
+      "symbol": "Rectangle.null",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Rectangle.swift",
+      "line": 121,
+      "symbol": "Rectangle.center",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Rectangle.swift",
+      "line": 208,
+      "symbol": "Rectangle.contains(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Rectangle.swift",
+      "line": 250,
+      "symbol": "Rectangle.minimum(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Rectangle.swift",
+      "line": 253,
+      "symbol": "Rectangle.maximum(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/axel/Develop/GitHub/ServerGeometry/Size.swift",
+      "line": 17,
+      "symbol": "Size",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/axel/Develop/GitHub/ServerGeometry"
+}
