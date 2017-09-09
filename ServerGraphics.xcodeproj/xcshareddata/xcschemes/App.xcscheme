@@ -39,6 +39,16 @@
                ReferencedContainer = "container:ServerGraphics.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "77D7703C1F6425BF00389422"
+               BuildableName = "ServerGraphicsTests.xctest"
+               BlueprintName = "ServerGraphicsTests"
+               ReferencedContainer = "container:ServerGraphics.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
